@@ -1,0 +1,18 @@
+mat-list-item{
+    border:1px solid black;
+    margin:5px 0px;
+}
+
+.todo{
+    margin:0 auto;
+    align-items: center;
+    vertical-align: middle;
+}
+
+mat-form-field{
+    margin-right:20px;
+}
+
+.modal{
+    vertical-align: middle;
+}

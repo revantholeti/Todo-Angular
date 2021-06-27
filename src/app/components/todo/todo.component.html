@@ -1,0 +1,33 @@
+<div style="height: 100vh;display: flex;
+align-items: center;">
+    <div class="todo">
+        <div class="addtodo">
+            <mat-form-field class="example-form-field">
+                <mat-label>Todo Item</mat-label>
+                <input matInput type="text" [(ngModel)]="todoitem">
+            </mat-form-field>
+            <button mat-raised-button (click)="addItem()">Add Item</button>
+        </div>
+
+        <!--  -->
+        <div class="listtodo">
+            <mat-nav-list>
+                <mat-list-item *ngFor="let i of data"
+                    [style.background-color]="i.status==='created' ? '#fdb7b7' : i.status==='onProgress'?'#fad4a9':'#acfaa9'"
+                    (click)="openDialog(i)">
+                    <div mat-line>
+                        {{ i.item }}
+                    </div>
+                    <button mat-icon-button #trigger=matMenuTrigger [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="statusChaged(i,'created')" *ngIf="i.status!=='created'">Created</button>
+                        <button mat-menu-item (click)="statusChaged(i,'onProgress')" *ngIf="i.status!=='onProgress'">On Progress</button>
+                        <button mat-menu-item (click)="statusChaged(i,'completed')" *ngIf="i.status!=='completed'">Completed</button>
+                    </mat-menu>
+                </mat-list-item>
+            </mat-nav-list>
+        </div>
+    </div>
+</div>
